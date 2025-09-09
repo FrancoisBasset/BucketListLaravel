@@ -31,6 +31,12 @@ class User extends Authenticatable {
         'remember_token',
     ];
 
+    protected $with = ['ideas'];
+
+    public function ideas() {
+        return $this->hasMany(Idea::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *

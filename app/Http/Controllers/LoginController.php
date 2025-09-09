@@ -11,7 +11,7 @@ class LoginController {
     public function login(LoginRequest $request) {
         $user = User::where('username', $request->username)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        if (!$user || !Hash::check($request->password, $user->password)) {
             throw new AuthenticationException('Les identifiants sont incorrects');
         }
 
