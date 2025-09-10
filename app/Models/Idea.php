@@ -14,5 +14,11 @@ class Idea extends Model {
         'description'
     ];
 
+    protected $with = ['comments'];
+
     protected $hidden = ['user_id'];
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
 }

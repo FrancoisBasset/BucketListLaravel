@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FriendshipController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\LoginController;
@@ -14,6 +15,8 @@ Route::post('login', [LoginController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::resource('ideas', IdeaController::class)
         ->middleware(CheckOwnedIdea::class);
+
+    Route::resource('ideas.comments', CommentController::class)->shallow();
 
     Route::resource('friends', FriendshipController::class);
 });

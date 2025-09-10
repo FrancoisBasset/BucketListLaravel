@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use App\Models\Friendship;
 use App\Models\Idea;
 use App\Models\User;
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder {
         Schema::disableForeignKeyConstraints();
 
         Friendship::truncate();
+        Comment::truncate();
         Idea::truncate();
         User::truncate();
 
@@ -26,6 +28,7 @@ class DatabaseSeeder extends Seeder {
         $this->call([
             UserSeeder::class,
             IdeaSeeder::class,
+            CommentSeeder::class,
             FriendshipSeeder::class
         ]);
     }

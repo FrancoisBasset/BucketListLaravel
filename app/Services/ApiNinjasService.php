@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class ApiNinjasService {
     public static function getRandomIdea() {
@@ -18,6 +19,6 @@ class ApiNinjasService {
             }
         }
 
-        return $response['item'];
+        return GoogleTranslate::trans($response['item'], 'fr');
     }
 }

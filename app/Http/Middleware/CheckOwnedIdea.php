@@ -10,7 +10,7 @@ class CheckOwnedIdea {
     public function handle(Request $request, Closure $next): Response {
         $idea = $request->route('idea');
 
-        if ($idea && $idea->user_id !== $request->user()->id) {
+        if ($idea && $idea->user_id !== $request->user()->id && $request->method() != 'GET') {
             abort(403);
         }
 
