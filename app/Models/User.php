@@ -27,6 +27,7 @@ class User extends Authenticatable {
      * @var list<string>
      */
     protected $hidden = [
+        'pivot',
         'password',
         'remember_token',
     ];
@@ -35,6 +36,11 @@ class User extends Authenticatable {
 
     public function ideas() {
         return $this->hasMany(Idea::class);
+    }
+
+    public function friends() {
+        return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')
+            ->withTimestamps();
     }
 
     /**
