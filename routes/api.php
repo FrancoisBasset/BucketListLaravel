@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FriendshipController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\CheckOwnedIdea;
 use Illuminate\Http\Request;
@@ -19,6 +20,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('ideas.comments', CommentController::class)->shallow();
 
     Route::resource('friends', FriendshipController::class);
+
+    Route::post('/logout', [LogoutController::class, 'logout'])->middleware('auth');
 });
 
 Route::get('/user', function (Request $request) {
