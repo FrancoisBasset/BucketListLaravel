@@ -5,11 +5,12 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class FriendResource extends JsonResource {
+class UserResource extends JsonResource {
     public function toArray(Request $request): array {
         return [
             'id' => $this->id,
             'username' => $this->username,
+            'friends' => FriendResource::collection($this->friends),
             'ideas' => $this->ideas
         ];
     }

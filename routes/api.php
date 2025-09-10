@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FriendshipController;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
@@ -18,6 +19,9 @@ Route::middleware('auth:sanctum')->group(function () {
         ->middleware(CheckOwnedIdea::class);
 
     Route::resource('ideas.comments', CommentController::class)->shallow();
+
+    Route::post('ideas/{idea}/likes', [LikeController::class, 'store']);
+    Route::delete('ideas/{idea}/likes', [LikeController::class, 'destroy']);
 
     Route::resource('friends', FriendshipController::class);
 

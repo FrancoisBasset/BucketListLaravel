@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
-use App\Http\Resources\FriendResource;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Hash;
@@ -19,10 +19,8 @@ class LoginController {
         // Création du token Sanctum
         $token = $user->createToken('api-token')->plainTextToken;
 
-        $user->friends = FriendResource::collection($user->friends);
-
         return response()->json([
-            'user' => $user,
+            'user' => UserResource::make($user),
             'token' => $token,
         ]);
     }

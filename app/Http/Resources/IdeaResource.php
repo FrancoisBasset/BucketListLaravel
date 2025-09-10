@@ -12,6 +12,10 @@ class IdeaResource extends JsonResource {
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array {
-        return parent::toArray($request);
+        $data = parent::toArray($request);
+
+        $data['likes'] = $this->likes->pluck('user_id');
+
+        return $data;
     }
 }

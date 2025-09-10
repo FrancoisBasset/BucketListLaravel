@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\IdeaResource;
+use App\Http\Resources\LikeResource;
 use App\Models\Idea;
 use App\Services\ApiNinjasService;
 use Illuminate\Http\Request;
 
 class IdeaController {
     public function index(Request $request) {
-        return Idea::all();
+        return IdeaResource::collection(Idea::all());
     }
 
     public function store(Request $request) {
@@ -24,7 +26,7 @@ class IdeaController {
     }
 
     public function show(Request $request, Idea $idea) {
-        return $idea;
+        return IdeaResource::make($idea);
     }
 
     public function update(Request $request, Idea $idea) {

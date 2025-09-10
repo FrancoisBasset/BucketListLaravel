@@ -64,6 +64,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Comment> $comments
  * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Like> $likes
+ * @property-read int|null $likes_count
  * @method static \Database\Factories\IdeaFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Idea newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Idea newQuery()
@@ -76,6 +78,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Idea whereUserId($value)
  */
 	class Idea extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Like newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Like newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Like query()
+ */
+	class Like extends \Eloquent {}
 }
 
 namespace App\Models{
