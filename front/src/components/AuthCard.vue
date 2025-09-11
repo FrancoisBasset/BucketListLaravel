@@ -2,7 +2,7 @@
 	<Card :title="title">
 		<q-input v-model="username" label="Nom d'utilisateur" filled color="teal" />
 
-		<q-input type="password" v-model="password"  label="Mot de passe" filled color="teal" />
+		<q-input type="password" v-model="password" label="Mot de passe" filled color="teal" />
 
 		<div class="text-center">
 			<q-btn :label="title" color="teal" type="submit" />
@@ -12,11 +12,11 @@
 
 <script setup>
 import Card from './lib/Card.vue';
-import {computed, ref} from "vue";
+import { computed, ref } from 'vue';
 
 const props = defineProps(['mode']);
 
-const title = computed(() => props.mode === 'login' ? 'Connexion' : 'Inscription');
+const title = computed(() => (props.mode === 'login' ? 'Connexion' : 'Inscription'));
 
 const username = ref('');
 const password = ref('');
@@ -35,7 +35,7 @@ function register() {
 			'Accept': 'application/json'
 		},
 		body: getJSONBody()
-	})
+	});
 }
 
 function login() {
@@ -45,6 +45,6 @@ function login() {
 			'Accept': 'application/json'
 		},
 		body: getJSONBody()
-	})
+	});
 }
 </script>
